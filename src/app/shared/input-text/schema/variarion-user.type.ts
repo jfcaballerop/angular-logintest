@@ -4,5 +4,7 @@ const USER_TYPE = "Usuario";
 
 export const GENERAL_IMPLEMENTATION_USER: ConfigurationModel = {
   label: "usuario",
-  type: USER_TYPE
+  type: USER_TYPE,
+  icon: 'account_circle',
+  placeholder: 'Usuario'
 }
