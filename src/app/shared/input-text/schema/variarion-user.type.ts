@@ -1,5 +1,8 @@
 import { ConfigurationModel } from "../configuration.model";
 
-export const GENERAL_IMPLEMENTATION: ConfigurationModel = {
-  label: "usuario"
+const USER_TYPE = "Usuario";
+
+export const GENERAL_IMPLEMENTATION_USER: ConfigurationModel = {
+  label: "usuario",
+  type: USER_TYPE
 }

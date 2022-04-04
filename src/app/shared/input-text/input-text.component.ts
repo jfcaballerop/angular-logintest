@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { InputActionModel, types } from './actions.model';
 import { ConfigurationModel } from './configuration.model';
 import { GENERAL_IMPLEMENTATION } from './schema/general-implementation.type';
+import { GENERAL_IMPLEMENTATION_PASS } from './schema/variarion-passtype';
+import { GENERAL_IMPLEMENTATION_USER } from './schema/variarion-user.type';
 
 @Component({
   selector: 'app-input-text',
@@ -21,9 +23,23 @@ export class InputTextComponent implements OnInit {
   }
 
   public onFocusOutEvent(event: any) {
-    console.log("Focus out ", event.target.value);
+    console.log("Focus out ", this.config.label, this.config.type);
+    let em: InputActionModel = {};
+    switch (this.config.type) {
+      case GENERAL_IMPLEMENTATION_USER.type:
+        em = { ...em, type: types.USER_ONFOCUS_OUT };
+        break;
+      case GENERAL_IMPLEMENTATION_PASS.type:
+        em = { ...em, type: types.PASS_ONFOCUS_OUT };
+        break;
 
-    this.actions.emit({ type: types.USER_ONFOCUS_OUT, payload: event.target.value });
+      default:
+        em = { ...em, type: types.GENERIC };
+        break;
+    }
+    em = { ...em, payload: event.target.value }
+
+    this.actions.emit(em);
   }
 
 }

@@ -1,3 +1,4 @@
 export interface ConfigurationModel {
-  label: string
+  label: string;
+  type: string;
 }
